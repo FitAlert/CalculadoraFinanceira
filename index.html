@@ -31,6 +31,12 @@
 
 <script>
     function calcular() {
-        
+        var fluxo = Number(inputFluxoInicial.value);
+        var conversao = Number(inputTaxaConversao.value);
+        var meta = Number(inputMetaClientes.value);
+
+        if (conversao < meta) {
+            divMensagem.innerHTML = "Você não está convertendo clientes."
+        }
     }
 </script>
