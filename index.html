@@ -6,8 +6,8 @@
     <title>Calculadora de Impacto no Ticket Médio com Monitoramento de Provadores</title>
 </head>
 <body><center>
-    <img src="C:\Users\joaop\Downloads\logo__2_-removebg-preview_(1).png" width="150" height="150">
-    <h1>Calculadora de Impacto no Ticket Médio com Monitoramento de Provadores</h1>
+    <img src="logo_transparente.png" width="300" height="300">
+    <h1>Calculadora de Impacto no Ticket Médio Com Monitoramento de Provadores</h1>
     Ticket médio atual mensal (R$): <input type="number" id="inputTicket" placeholder="Exemplo: 300">
     <br><br>
 
@@ -29,7 +29,7 @@
                 return;
             }
 
-            // Com base na pesquisa da Alert
+            // Com base na pesquisa da FitAlert:
             var aumentoTicket = 2;  // Clientes que usam provador dobram o número de itens
             var taxaConversaoSemProvador = 0.1;  
             var taxaConversaoComProvador = 0.67;  
@@ -43,18 +43,18 @@
 
             divMensagem.innerHTML = `
                     <h2>1. Uso de Provadores sem Otimizar Tomada de Decisão</h2>
-                    <b> Ticket médio atual:</b> R$${ticket}<br>
-                    <b>Número de visitantes mensais:</b> ${clientes}<br>
-                    <b>Taxa de conversão (sem provador):</b> 10%<br>
+                    <b> Ticket médio atual:</b> R$${(ticket).toFixed(2)}.<br>
+                    <b>Número de visitantes mensais:</b> ${clientes} visitantes.<br>
+                    <b>Taxa de conversão (sem provador):</b> 10%.<br>
                     <span style="color: red;"> Com ${clientes} visitantes mensais, você está convertendo aproximadamente <b>${visitantesConvertidosSemProvador} clientes</b> em vendas POR SEMANA.</span>
                     <h2>2. Provadores Estratégicos (Monitoramento Inteligente)</h2>
-                    <b>Ticket médio potencial:</b> R$${ticketComMonitoramento}<br>
-                    <b>Potencial de aumento de faturamento mensal:</b> R$${aumentoFaturamento} (2x o valor atual)<br>
-                    <b>Taxa de conversão com provador otimizado:</b> 67%<br>
+                    <b>Ticket médio potencial:</b> R$${(ticketComMonitoramento).toFixed(2)}.<br>
+                    <b>Potencial de aumento de faturamento mensal:</b> R$${(aumentoFaturamento).toFixed(2)} (2x o valor atual).<br>
+                    <b>Taxa de conversão com provador otimizado:</b> 67%.<br>
                     Com ${clientes} visitantes mensais, você poderia converter até <b>${visitantesConvertidosComProvador} clientes</b> em vendas.
                     <h2>Comparação: O Que Você Está Perdendo</h2>
-                    <span style="color: green;"><b>Aumento no faturamento potencial:</b>R$${aumentoFaturamento}<br></span>
-                    <span style="color: green;"><b>Aumento no ticket médio:</b> R$${(ticketComMonitoramento - ticket)}<br></span>
+                    <span style="color: green;"><b>Aumento no faturamento potencial:</b>R$${(aumentoFaturamento).toFixed(2)}.<br></span>
+                    <span style="color: green;"><b>Aumento no ticket médio:</b> R$${(ticketComMonitoramento - ticket).toFixed(2)}.<br></span>
                     <span style="color: green;"><b>Potencial de conversão perdido sem otimização:</b> ${visitantesConvertidosComProvador- visitantesConvertidosSemProvador} clientes. </span>`;
         }
     </script>
