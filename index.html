@@ -6,7 +6,12 @@
     <title>Calculadora de Impacto no Ticket Médio com Monitoramento de Provadores</title>
 </head>
 <body><center>
-    <img src="logo_transparente.png" width="300" height="300">
+    <img src="logo_transparente.png" width="200" height="200">
+    <style>
+        body {
+            background-color: #FAEBD7;
+        }
+    </style>
     <h1>Calculadora de Impacto no Ticket Médio Com Monitoramento de Provadores</h1>
     Ticket médio atual mensal (R$): <input type="number" id="inputTicket" placeholder="Exemplo: 300">
     <br><br>
@@ -39,7 +44,7 @@
             var visitantesConvertidosComProvador = clientes * taxaConversaoComProvador;
 
             // Potencial de aumento no faturamento
-            var aumentoFaturamento = (ticketComMonitoramento - ticket) * clientes;
+            var aumentoFaturamento = (ticketComMonitoramento - ticket) * (clientes * 0.67);
 
             divMensagem.innerHTML = `
                     <h2>1. Uso de Provadores sem Otimizar Tomada de Decisão</h2>
@@ -49,12 +54,12 @@
                     <span style="color: red;"> Com ${clientes} visitantes mensais, você está convertendo aproximadamente <b>${visitantesConvertidosSemProvador} clientes</b> em vendas POR SEMANA.</span>
                     <h2>2. Provadores Estratégicos (Monitoramento Inteligente)</h2>
                     <b>Ticket médio potencial:</b> R$${(ticketComMonitoramento).toFixed(2)}.<br>
-                    <b>Potencial de aumento de faturamento mensal:</b> R$${(aumentoFaturamento).toFixed(2)} (2x o valor atual).<br>
+                    <b>Potencial de aumento de faturamento mensal:</b> R$${(aumentoFaturamento)},00 (2x o valor atual).<br>
                     <b>Taxa de conversão com provador otimizado:</b> 67%.<br>
-                    Com ${clientes} visitantes mensais, você poderia converter até <b>${visitantesConvertidosComProvador} clientes</b> em vendas.
+                    Com ${clientes} visitantes mensais, você poderá converter até <b>${visitantesConvertidosComProvador} clientes</b> em vendas.
                     <h2>Comparação: O Que Você Está Perdendo</h2>
                     <span style="color: green;"><b>Aumento no faturamento potencial:</b>R$${(aumentoFaturamento).toFixed(2)}.<br></span>
-                    <span style="color: green;"><b>Aumento no ticket médio:</b> R$${(ticketComMonitoramento - ticket).toFixed(2)}.<br></span>
+                    <span style="color: green;"><b>Aumento no ticket médio:</b> R$${(ticketComMonitoramento).toFixed(2)}.<br></span>
                     <span style="color: green;"><b>Potencial de conversão perdido sem otimização:</b> ${visitantesConvertidosComProvador- visitantesConvertidosSemProvador} clientes. </span>`;
         }
     </script>
