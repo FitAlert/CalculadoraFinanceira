@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-calculadora.css">
     <title>Calculadora de Impacto no Ticket Médio com Monitoramento de Provadores</title>
 </head>
+
 <body>
-    <h1>Calculadora de Impacto no Ticket Médio com Monitoramento de Provadores</h1>
-    Ticket médio atual mensal (R$): <input type="number" id="inputTicket" placeholder="Exemplo: 300">
-    <br>
+    <div class="calculadora">
 
-    Número de visitantes mensais: <input type="number" id="inputClientes" placeholder="Exemplo: 100">
-    <br>
+        <div class="container">
+            <div class="coluna">
+                <div class="titulo">
+                    <h1>Calculadora de Impacto no Ticket Médio com Monitoramento de Provadores</h1>
+                    <p>Entenda como o monitoramento pode dobrar seu faturamento</p>
+                </div>
+                <div class="inserir-dados">
+                    <span>Ticket médio atual mensal (R$): <input type="number" id="inputTicket"
+                            placeholder="Exemplo: 300"></span>
+                    <span>Número de visitantes mensais: <input type="number" id="inputClientes"
+                            placeholder="Exemplo: 100"></span>
+                    <button onclick="calcular()" class="btn-calcular">Calcular Impacto no Faturamento</button>
+                </div>
+            </div>
 
-    <button onclick="calcular()">Calcular Impacto no Faturamento</button>
 
-    <div id="divMensagem"></div>
+
+            <div id="divMensagem" class="mensagem">
+
+            </div>
+        </div>
+    </div>
 
     <script>
-        
+
         function calcular() {
             var ticket = Number(inputTicket.value)
             var clientes = Number(inputClientes.value)
@@ -30,8 +47,8 @@
 
             // Com base na pesquisa da Alert
             var aumentoTicket = 2;  // Clientes que usam provador dobram o número de itens
-            var taxaConversaoSemProvador = 0.1;  
-            var taxaConversaoComProvador = 0.67;  
+            var taxaConversaoSemProvador = 0.1;
+            var taxaConversaoComProvador = 0.67;
 
             var ticketComMonitoramento = ticket * aumentoTicket;
             var visitantesConvertidosSemProvador = clientes * taxaConversaoSemProvador;
@@ -40,22 +57,100 @@
             // Potencial de aumento no faturamento
             var aumentoFaturamento = (ticketComMonitoramento - ticket) * clientes;
 
-            divMensagem.innerHTML = `
-                    <h2>1. Uso de Provadores sem Otimizar Tomada de Decisão</h2>
-                    <b> Ticket médio atual:</b> R$${ticket}<br>
-                    <b>Número de visitantes mensais:</b> ${clientes}<br>
-                    <b>Taxa de conversão (sem provador):</b> 10%<br>
-                    Com ${clientes} visitantes mensais, você está convertendo aproximadamente <b>${visitantesConvertidosSemProvador} clientes</b> em vendas.
-                    <h2>2. Provadores Estratégicos (Monitoramento Inteligente)</h2>
-                    <b>Ticket médio potencial:</b> R$${ticketComMonitoramento}<br>
-                    <b>Potencial de aumento de faturamento mensal:</b> R$${aumentoFaturamento} (2x o valor atual)<br>
-                    <b>Taxa de conversão com provador otimizado:</b> 67%<br>
-                    Com ${clientes} visitantes mensais, você poderia converter até <b>${visitantesConvertidosComProvador} clientes</b> em vendas.
-                    <h2>Comparação: O Que Você Está Perdendo</h2>
-                    <b>Aumento no faturamento potencial:</b> R$${aumentoFaturamento}<br>
-                    <b>Aumento no ticket médio:</b> R$${(ticketComMonitoramento - ticket)}<br>
-                    <b>Potencial de conversão perdido sem otimização:</b> ${visitantesConvertidosComProvador- visitantesConvertidosSemProvador} clientes`;
+            divMensagem.innerHTML += `
+            <div class="geral">
+                        <h2>O Que Você Está Perdendo</h2>
+                        <br><br>
+                        <span style="color:green;">
+                            <b>Aumento no faturamento potencial:</b> R$${aumentoFaturamento}
+                        </span><br><br>
+                        <span style="color:green;">
+                            <b>Aumento no ticket médio:</b> R$${(ticketComMonitoramento - ticket)}
+                        </span><br><br>
+                        <span>
+                            <b>Você está perdendo cerca de </b><span style="color:red;"> ${visitantesConvertidosComProvador - visitantesConvertidosSemProvador} clientes</span>
+                        </span>
+                    </div>
+
+                        <div class="container">
+                            <div class="resp1">
+                                <h2>1. Sem monitoramento em provadores</h2>
+                            
+                            
+                                <div class="dados">
+                                    <div class="box">
+                                            <div class="label_box">
+                                                    <b> Ticket médio</b>
+                                            </div>
+                                            R$${ticket}
+                                    </div>
+                                    <div class="box">
+                                            <div class="label_box">
+                                                <b>Visitantes mensais:</b>
+                                            </div>
+                                            ${clientes}
+                                    </div>
+                            
+                                    <div class="box">
+                                            <div class="label_box" >
+                                                <b>Taxa de conversão </b>
+                                            </div>
+                                             10%
+                                    </div>
+                                    <div class="box">
+                                            <div class="label_box">
+                                                <b>Conversão de clientes</b>
+                                            </div>
+                                                ${visitantesConvertidosSemProvador} em vendas.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="resp2">
+                                <h2>2. Com monitoramento no provador de forma otimizada</h2>
+                            
+                                    <div class="dados">
+                                        <div class="box">
+                                            <div class="label_box">
+                                                <b>Ticket médio potencial:</b>
+                                            </div>
+                                            R$${ticketComMonitoramento}
+                                        </div>
+                            
+                                       <div class="box">
+                                         <div class="label_box">
+                                            <b>Mensal:</b>
+                                            </div>
+                                         R$${aumentoFaturamento}
+                                          (2x o valor atual)<br>
+                                            </div>
+                            
+                                        <div class="box">
+                                            <div class="label_box">
+                                                <b>Taxa de conversão:</b>
+                                                </div>
+                                            67%
+                                        </div>
+                            
+                                        <div class="box">
+                                            <div class="label_box">
+                                                <b>Visitantes mensais:</b>
+                                            </div>
+                                            ${clientes}
+                                        </div>
+                            
+                                        <div class="box" >
+                                            <div class="label_box" >
+                                                <b>Conversão de clientes:</b>
+                                            </div>
+                                            ${visitantesConvertidosComProvador}
+                                    </div>
+                                 </div> 
+                            </div> 
+                        </div> 
+                    `;
         }
     </script>
 </body>
+
 </html>
