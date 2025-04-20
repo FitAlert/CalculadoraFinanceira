@@ -37,13 +37,14 @@
     <script>
 
         function calcular() {
-            var ticket = Number(inputTicket.value)
-            var clientes = Number(inputClientes.value)
+            var mensagem = '';
+            var ticket = Number(inputTicket.value);
+            var clientes = Number(inputClientes.value);
 
             if (ticket <= 0 || clientes <= 0) {
-                alert("Campos incorretos.");
-                return;
-            }
+                alert("Campos inválidos");
+                mensagem = '';
+            } else {
 
             // Com base na pesquisa da Alert
             var aumentoTicket = 2;  // Clientes que usam provador dobram o número de itens
@@ -57,7 +58,7 @@
             // Potencial de aumento no faturamento
             var aumentoFaturamento = (ticketComMonitoramento - ticket) * clientes;
 
-            divMensagem.innerHTML += `
+            mensagem = `
             <div class="geral">
                         <h2>O Que Você Está Perdendo</h2>
                         <br><br>
@@ -149,6 +150,8 @@
                             </div> 
                         </div> 
                     `;
+            }
+            divMensagem.innerHTML = mensagem;
         }
     </script>
 </body>
